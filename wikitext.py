@@ -10,13 +10,9 @@ from flask import Flask, request
 from twilio.rest import TwilioRestClient
 import twilio.twiml
 app = Flask(__name__)
-account = "ACc6c3f07559484efcb7ca167ecd0c1209"
-token = "bbe3fc010c1b94ccce6f0566ec36095f"
+account = ACCOUNT
+token = TOKEN
 @app.route('/')
-def index():
-    client = TwilioRestClient(account, token)
-    client.messages.create(to="+447871218445",from_="+441461211007",body="Hello there!")
-    return "Hello"
 @app.route('/text', methods=['POST'])
 def textReceived():
     text = wikipedia.summary(request.form.get('Body'), chars=1200)
